@@ -1,11 +1,11 @@
 /* global describe, it, expect */
 
-var pkg = require('..');
+var locomotive = require('..');
 
-describe('chai-locomotive-helpers', function() {
+describe('chai-locomotive-function', function() {
   
-  it('should export object', function() {
-    expect(pkg).to.be.an('object');
+  it('should export function', function() {
+    expect(locomotive).to.be.an('function');
   });
   
 });
