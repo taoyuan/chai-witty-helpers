@@ -13,7 +13,7 @@ describe('test dynamic helper that prepares response', function() {
   describe('sync', function() {
     
     describe('and creates', function() {
-      var pres, eres;
+      var help;
     
       before(function(done) {
         var test = new Test(dynamicHelper, 'test', 'show', true);

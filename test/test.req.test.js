@@ -38,7 +38,7 @@ describe('test dynamic helper that prepares request', function() {
   describe('async', function() {
     
     describe('and creates', function() {
-      var res;
+      var help;
     
       before(function(done) {
         var test = new Test(dynamicHelper, 'test', 'show', true);
