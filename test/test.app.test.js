@@ -39,7 +39,7 @@ describe('test that prepares app', function() {
       var test = new Test(helper, 'test', 'show');
       test.app(function(app) {
         app.dynamicHelper('someone', function(req, res) {
-          return function() { return req.query.name; }
+          return function() { return req.query.name; };
         });
       }).req(function(req) {
         req.query = {};
@@ -62,7 +62,7 @@ describe('test that prepares app', function() {
       return function() {
         var app = req._locomotive.app;
         return 'Redirecting to ' + app._routeTo('foo', 'index').path();
-      }
+      };
     }
     
     var help;
@@ -89,7 +89,7 @@ describe('test that prepares app', function() {
       return function() {
         var app = req._locomotive.app;
         return 'Redirecting to ' + app._routeTo('foo', 'show').path({ id: 123 });
-      }
+      };
     }
     
     var help;
@@ -116,7 +116,7 @@ describe('test that prepares app', function() {
       return function() {
         var app = req._locomotive.app;
         return 'Redirecting to ' + app._routeTo('foo', 'show').path({ id: 123, format: 'json' });
-      }
+      };
     }
     
     var help;
@@ -143,7 +143,7 @@ describe('test that prepares app', function() {
       return function() {
         var app = req._locomotive.app;
         return 'Redirecting to ' + app._routeTo('foo', 'show').path({ id: 123 });
-      }
+      };
     }
     
     var help;
@@ -165,12 +165,12 @@ describe('test that prepares app', function() {
     });
   });
   
-  describe('with dynamic helper that uses model awareness', function() {
+  describe('implicitly for model awareness', function() {
     function dynamicHelper(req, res) {
       return function(obj) {
         var app = req._locomotive.app;
         return 'Looking at ' + app._recordOf(obj);
-      }
+      };
     }
     
     var help;
@@ -185,7 +185,7 @@ describe('test that prepares app', function() {
     });
   
     it('should create helper', function() {
-      function Animal() {};
+      function Animal() {}
       
       expect(help).to.be.a('function');
       expect(help(new Animal())).to.equal('Looking at Animal');
@@ -193,11 +193,11 @@ describe('test that prepares app', function() {
     });
   });
   
-  describe('with dynamic helper that uses current controller and action', function() {
+  describe('implicitly for current controller and action', function() {
     function dynamicHelper(req, res) {
       return function() {
         return 'Redirecting from ' + req._locomotive.controller + '#' + req._locomotive.action;
-      }
+      };
     }
     
     var help;

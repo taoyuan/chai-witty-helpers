@@ -1,4 +1,4 @@
-/* global describe, it, before, expect */
+/* global describe, it, expect */
 
 var Response = require('../lib/response');
 

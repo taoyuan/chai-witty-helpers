@@ -7,7 +7,7 @@ describe('test dynamic helper that prepares response', function() {
   function dynamicHelper(req, res) {
     return function() {
       return 'Help me, ' + res.locals.name;
-    }
+    };
   }
   
   describe('sync', function() {
