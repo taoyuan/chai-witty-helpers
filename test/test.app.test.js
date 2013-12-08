@@ -8,6 +8,8 @@ describe('test that prepares app', function() {
     function helper() {
       return 'Help me, ' + this.someone();
     }
+    
+    var help;
   
     before(function(done) {
       var test = new Test(helper, 'test', 'show');
@@ -30,6 +32,8 @@ describe('test that prepares app', function() {
     function helper() {
       return 'Help me, ' + this.someone();
     }
+    
+    var help;
   
     before(function(done) {
       var test = new Test(helper, 'test', 'show');
@@ -60,6 +64,8 @@ describe('test that prepares app', function() {
         return 'Redirecting to ' + app._routeTo('foo', 'index').path();
       }
     }
+    
+    var help;
   
     before(function(done) {
       var test = new Test(dynamicHelper, 'test', 'case', true);
@@ -85,6 +91,8 @@ describe('test that prepares app', function() {
         return 'Redirecting to ' + app._routeTo('foo', 'show').path({ id: 123 });
       }
     }
+    
+    var help;
   
     before(function(done) {
       var test = new Test(dynamicHelper, 'test', 'case', true);
@@ -110,6 +118,8 @@ describe('test that prepares app', function() {
         return 'Redirecting to ' + app._routeTo('foo', 'show').path({ id: 123, format: 'json' });
       }
     }
+    
+    var help;
   
     before(function(done) {
       var test = new Test(dynamicHelper, 'test', 'case', true);
@@ -135,6 +145,8 @@ describe('test that prepares app', function() {
         return 'Redirecting to ' + app._routeTo('foo', 'show').path({ id: 123 });
       }
     }
+    
+    var help;
   
     before(function(done) {
       var test = new Test(dynamicHelper, 'test', 'case', true);
@@ -150,6 +162,57 @@ describe('test that prepares app', function() {
     it('should create helper', function() {
       expect(help).to.be.a('function');
       expect(help()).to.equal('Redirecting to /foo/123');
+    });
+  });
+  
+  describe('with dynamic helper that uses model awareness', function() {
+    function dynamicHelper(req, res) {
+      return function(obj) {
+        var app = req._locomotive.app;
+        return 'Looking at ' + app._recordOf(obj);
+      }
+    }
+    
+    var help;
+  
+    before(function(done) {
+      var test = new Test(dynamicHelper, 'test', 'case', true);
+      test.create(function(err, h) {
+        if (err) { return done(err); }
+        help = h;
+        done();
+      });
+    });
+  
+    it('should create helper', function() {
+      function Animal() {};
+      
+      expect(help).to.be.a('function');
+      expect(help(new Animal())).to.equal('Looking at Animal');
+    });
+  });
+  
+  describe('with dynamic helper that uses current controller and action', function() {
+    function dynamicHelper(req, res) {
+      return function() {
+        return 'Redirecting from ' + req._locomotive.controller + '#' + req._locomotive.action;
+      }
+    }
+    
+    var help;
+  
+    before(function(done) {
+      var test = new Test(dynamicHelper, 'test', 'case', true);
+      test.create(function(err, h) {
+        if (err) { return done(err); }
+        help = h;
+        done();
+      });
+    });
+  
+    it('should create helper', function() {
+      expect(help).to.be.a('function');
+      expect(help()).to.equal('Redirecting from test#case');
     });
   });
   
