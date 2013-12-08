@@ -189,6 +189,7 @@ describe('test that prepares app', function() {
       
       expect(help).to.be.a('function');
       expect(help(new Animal())).to.equal('Looking at Animal');
+      expect(help(123)).to.equal('Looking at undefined');
     });
   });
   
