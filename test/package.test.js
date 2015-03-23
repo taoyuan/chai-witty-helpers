@@ -1,11 +1,11 @@
 /* global describe, it, expect */
 
-var locomotive = require('..');
+var maglev = require('..');
 
-describe('chai-locomotive-function', function() {
+describe('chai-maglev-function', function() {
   
   it('should export function', function() {
-    expect(locomotive).to.be.an('function');
+    expect(maglev).to.be.an('function');
   });
   
 });

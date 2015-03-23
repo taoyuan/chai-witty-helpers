@@ -1,10 +1,10 @@
 {
-  "name": "chai-locomotive-helpers",
+  "name": "chai-maglev-helpers",
   "version": "0.1.0",
   "description": "Helpers for testing Locomotive helpers with the Chai assertion library.",
   "keywords": [
     "chai",
-    "locomotive",
+    "maglev",
     "helper",
     "helpers"
   ],
@@ -15,10 +15,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jaredhanson/chai-locomotive-helpers.git"
+    "url": "git://github.com/jaredhanson/chai-maglev-helpers.git"
   },
   "bugs": {
-    "url": "http://github.com/jaredhanson/chai-locomotive-helpers/issues"
+    "url": "http://github.com/jaredhanson/chai-maglev-helpers/issues"
   },
   "licenses": [
     {

@@ -60,7 +60,7 @@ describe('test that prepares app', function() {
   describe('with route', function() {
     function dynamicHelper(req, res) {
       return function() {
-        var app = req._locomotive.app;
+        var app = req._maglev.app;
         return 'Redirecting to ' + app._routeTo('foo', 'index').path();
       };
     }
@@ -87,7 +87,7 @@ describe('test that prepares app', function() {
   describe('with route with placeholder', function() {
     function dynamicHelper(req, res) {
       return function() {
-        var app = req._locomotive.app;
+        var app = req._maglev.app;
         return 'Redirecting to ' + app._routeTo('foo', 'show').path({ id: 123 });
       };
     }
@@ -114,7 +114,7 @@ describe('test that prepares app', function() {
   describe('with route with placeholder and optional format', function() {
     function dynamicHelper(req, res) {
       return function() {
-        var app = req._locomotive.app;
+        var app = req._maglev.app;
         return 'Redirecting to ' + app._routeTo('foo', 'show').path({ id: 123, format: 'json' });
       };
     }
@@ -141,7 +141,7 @@ describe('test that prepares app', function() {
   describe('with route with placeholder and optional format that is not specified', function() {
     function dynamicHelper(req, res) {
       return function() {
-        var app = req._locomotive.app;
+        var app = req._maglev.app;
         return 'Redirecting to ' + app._routeTo('foo', 'show').path({ id: 123 });
       };
     }
@@ -168,7 +168,7 @@ describe('test that prepares app', function() {
   describe('implicitly for model awareness', function() {
     function dynamicHelper(req, res) {
       return function(obj) {
-        var app = req._locomotive.app;
+        var app = req._maglev.app;
         return 'Looking at ' + app._recordOf(obj);
       };
     }
@@ -196,7 +196,7 @@ describe('test that prepares app', function() {
   describe('implicitly for current controller and action', function() {
     function dynamicHelper(req, res) {
       return function() {
-        return 'Redirecting from ' + req._locomotive.controller + '#' + req._locomotive.action;
+        return 'Redirecting from ' + req._maglev.controller + '#' + req._maglev.action;
       };
     }
     
