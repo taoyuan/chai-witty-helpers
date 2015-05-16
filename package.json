@@ -1,7 +1,7 @@
 {
   "name": "chai-witty-helpers",
   "version": "0.2.0",
-  "description": "Helpers for testing Locomotive helpers with the Chai assertion library.",
+  "description": "Helpers for testing Witty helpers with the Chai assertion library.",
   "keywords": [
     "chai",
     "witty",
